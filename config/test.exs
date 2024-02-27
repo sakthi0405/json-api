@@ -7,9 +7,9 @@ import Config
 # Run `mix help test` for more information.
 config :json_api, JsonApi.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   hostname: "localhost",
-  database: "json_api_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "elixir_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 

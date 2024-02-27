@@ -14,16 +14,24 @@ defmodule JsonApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", JsonApiWeb do
-    pipe_through :browser
+  # pipeline :json_api do
+  #   plug :accepts, ["json-api"]
+  #   plug JaSerializer.Deserializer
+  # end
 
-    get "/", PageController, :home
-  end
+  # scope "/", JsonApiWeb do
+  #   pipe_through :browser
+
+  #   get "/", PageController, :home
+  # end
 
   # Other scopes may use custom stacks.
-  # scope "/api", JsonApiWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", JsonApiWeb do
+    pipe_through :api
+    resources "/projects", ProjectController, only: [:index, :show]
+    # resources "/list", ListController, only: [:index, :show, :create]
+    # get "/projects/:id", ProjectController, :show
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:json_api, :dev_routes) do

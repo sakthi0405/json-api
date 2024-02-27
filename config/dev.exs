@@ -3,9 +3,9 @@ import Config
 # Configure your database
 config :json_api, JsonApi.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   hostname: "localhost",
-  database: "json_api_dev",
+  database: "elixir",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

@@ -1,6 +1,12 @@
 defmodule JsonApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :json_api
 
+  plug CORSPlug,
+    origin: "*",
+    methods: ~w(GET POST PUT DELETE OPTIONS HEAD),
+    headers: "content-type, authorization",
+    max_age: 86400
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
